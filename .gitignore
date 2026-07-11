@@ -48,3 +48,4 @@ htmlcov/
 # Type checkers
 .mypy_cache/
 .dmypy.json
+**/desktop.ini

@@ -1,20 +1,24 @@
-// Chat UI logic: sends messages to the backend and renders replies.
 const chatWindow = document.getElementById("chat-window");
 const chatForm = document.getElementById("chat-form");
 const chatInput = document.getElementById("chat-input");
 
-function appendMessage(role, text) {
+function appendLine(role, text, pending) {
   const wrapper = document.createElement("div");
-  wrapper.className = `message ${role}`;
+  wrapper.className = `line ${role}`;
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
-  bubble.textContent = text;
+  const promptSpan = document.createElement("span");
+  promptSpan.className = "prompt";
+  promptSpan.textContent = role === "user" ? "$" : ">";
 
-  wrapper.appendChild(bubble);
+  const textSpan = document.createElement("span");
+  textSpan.className = pending ? "text pending" : "text";
+  textSpan.textContent = text;
+
+  wrapper.appendChild(promptSpan);
+  wrapper.appendChild(textSpan);
   chatWindow.appendChild(wrapper);
   chatWindow.scrollTop = chatWindow.scrollHeight;
-  return bubble;
+  return textSpan;
 }
 
 async function sendMessage(message) {
@@ -26,7 +30,7 @@ async function sendMessage(message) {
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => ({}));
-    throw new Error(errorBody.detail || "Request failed");
+    throw new Error(errorBody.detail || "request failed");
   }
 
   const data = await response.json();
@@ -38,19 +42,21 @@ chatForm.addEventListener("submit", async (event) => {
   const message = chatInput.value.trim();
   if (!message) return;
 
-  appendMessage("user", message);
+  appendLine("user", message, false);
   chatInput.value = "";
   chatInput.disabled = true;
   const submitButton = chatForm.querySelector("button");
   submitButton.disabled = true;
 
-  const pending = appendMessage("assistant", "Thinking...");
+  const pending = appendLine("assistant", "thinking", true);
 
   try {
     const reply = await sendMessage(message);
     pending.textContent = reply;
+    pending.classList.remove("pending");
   } catch (err) {
-    pending.textContent = `Error: ${err.message}`;
+    pending.textContent = `error: ${err.message}`;
+    pending.classList.remove("pending");
   } finally {
     chatInput.disabled = false;
     submitButton.disabled = false;

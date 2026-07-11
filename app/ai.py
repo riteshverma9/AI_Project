@@ -10,10 +10,10 @@ logger = get_logger(__name__)
 
 client = OpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
-    api_key=settings.NVIDIA_API_KEY,
+    api_key="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",
 )
 
-DEFAULT_MODEL = "meta/llama3-70b-instruct"
+DEFAULT_MODEL = "deepseek-ai/deepseek-v4-pro"
 
 
 def generate_reply(message: str) -> str:

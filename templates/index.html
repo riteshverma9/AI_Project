@@ -4,24 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI_Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <header class="app-header">
-      <h1>AI_Project</h1>
-      <span class="provider-badge">NVIDIA</span>
-    </header>
+  <div class="terminal">
+    <div class="titlebar">
+      <div class="dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="titlebar-name">ritesh@ai-project:~</span>
+      <span class="provider-badge">ollama</span>
+    </div>
 
     <main id="chat-window" class="chat-window">
-      <div class="message assistant">
-        <div class="bubble">Hi! I'm your AI assistant. Ask me anything.</div>
+      <div class="line assistant">
+        <span class="prompt">&gt;</span>
+        <span class="text">system online. ask me anything.</span>
       </div>
     </main>
 
     <form id="chat-form" class="chat-form">
-      <textarea id="chat-input" placeholder="Type your message..." rows="1" required></textarea>
-      <button type="submit">Send</button>
+      <span class="prompt input-prompt">$</span>
+      <textarea id="chat-input" placeholder="type a message..." rows="1" required></textarea>
+      <button type="submit">run</button>
     </form>
   </div>
 
