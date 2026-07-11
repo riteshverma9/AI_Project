@@ -95,6 +95,17 @@ AI_Project/
 
 ## API Documentation
 
+## Screenshots
+
+### Terminal Setup
+![Terminal Setup](docs/terminal.png)
+
+### Chat UI
+![AI_Project Chat UI](docs/chat-ui.png)
+
+### AI Response
+![AI Response](docs/ai-response.png)
+
 Once running, interactive API docs are available at:
 
 - Swagger UI: `http://localhost:8000/docs`
