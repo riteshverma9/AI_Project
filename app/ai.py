@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 
 client = OpenAI(
     base_url="https://integrate.api.nvidia.com/v1",
-    api_key="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",
+    api_key="Enter Your API Key",
 )
 
 DEFAULT_MODEL = "deepseek-ai/deepseek-v4-pro"
