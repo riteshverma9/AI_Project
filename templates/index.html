@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI_Project</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>AI_Project</h1>
+      <span class="provider-badge">NVIDIA</span>
+    </header>
+
+    <main id="chat-window" class="chat-window">
+      <div class="message assistant">
+        <div class="bubble">Hi! I'm your AI assistant. Ask me anything.</div>
+      </div>
+    </main>
+
+    <form id="chat-form" class="chat-form">
+      <textarea id="chat-input" placeholder="Type your message..." rows="1" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

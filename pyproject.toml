@@ -1,0 +1,18 @@
+[project]
+name = "ai_project"
+version = "1.0.0"
+description = "AI-powered FastAPI application (NVIDIA)"
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
